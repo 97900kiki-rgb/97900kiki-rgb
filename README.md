@@ -13,4 +13,6 @@
 
 ## 수업 중 만든 코딩 게임   
 https://arcade.makecode.com/41736-18622-85907-76136   
-엔트리
+엔트리   
+<img width="671" height="785" alt="image" src="https://github.com/user-attachments/assets/d9d1923b-eb71-488e-9922-aec179f05eda" />
+
