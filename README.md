@@ -11,3 +11,6 @@
 2.캡처도구를 이용해서 클립보드에 그림을 복사해와서   
 3.여기에 그냥 붙여 넣기를 합니다.<img width="483" height="477" alt="image" src="https://github.com/user-attachments/assets/4c479dd7-64e7-42f8-ab11-b46e12a1f7c2" />
 
+## 수업 중 만든 코딩 게임   
+https://arcade.makecode.com/41736-18622-85907-76136   
+엔트리
