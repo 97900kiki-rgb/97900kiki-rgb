@@ -1,16 +1,13 @@
-## Hi there 👋
+#안녕하세요.
+저는 **박서현*입니다.
+##제가 잘하는 것은
+-남의 이야기에 공감해 주는 일
+-카페에서 멍때리는 일 
+-소소한 아이디어 구상
+입니다.
 
-<!--
-**97900kiki-rgb/97900kiki-rgb** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+##이번에는 그림을 넣어 볼께요.
+1.가장 쉬운 방법만 기억 합시다.
+2.캡처도구를 이용해서 클립보드에 그림을 복사해와서
+3.여기에 그냥 붙여 넣기를 합니다.<img width="483" height="477" alt="image" src="https://github.com/user-attachments/assets/4c479dd7-64e7-42f8-ab11-b46e12a1f7c2" />
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
