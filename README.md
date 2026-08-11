@@ -13,5 +13,6 @@
 
 ## 수업 중 만든 엔트리 게임   
 https://arcade.makecode.com/41736-18622-85907-76136   
+해골을 피하면서 전구를 먹으면 레벨이 올라가는 게임
 <img width="671" height="785" alt="image" src="https://github.com/user-attachments/assets/d9d1923b-eb71-488e-9922-aec179f05eda" />
 
