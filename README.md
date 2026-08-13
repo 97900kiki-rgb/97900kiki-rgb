@@ -22,3 +22,5 @@ https://arcade.makecode.com/41736-18622-85907-76136
 
 ## Gamma 를 이용한 나만의 아이디어   
 https://ai--2qevg3e.gamma.site/
+2026년 8월 13일
+<img width="309" height="83" alt="image" src="https://github.com/user-attachments/assets/4c1e9d6f-819a-46a7-b38a-18c9b01fdc60" />
