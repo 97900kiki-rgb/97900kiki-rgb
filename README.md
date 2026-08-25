@@ -20,7 +20,10 @@ https://arcade.makecode.com/41736-18622-85907-76136
 - 매일 **'뭘 입을까!'** 고민하기 싫어. 나만의 **코디네이터**가 있었으면 좋겠다.   
 - 마트를 이용하니까! 어디 마트가 **더 저렴**하고 어느 **산지**에서 왔는지 알려주는 인공지능이 있었으면 좋겠다.
 
-## Gamma 를 이용한 나만의 아이디어 PDF   
+## Gamma 활용한 나만의 아이디어 PDF   
 [file:///C:/Users/504/Desktop/ah8b9mm8f2uoggc%20(1).pdf](https://gamma.app/docs/-ah8b9mm8f2uoggc?mode=doc)   
 2026년 8월 13일
 <img width="309" height="83" alt="image" src="https://github.com/user-attachments/assets/4c1e9d6f-819a-46a7-b38a-18c9b01fdc60" />
+
+## 젠스파크 AI 활용한 웹사이트   
+file:///C:/Users/504/Desktop/%EB%B0%95%EC%84%9C%ED%98%84/AI%20%ED%8C%A8%EC%85%98%20%EC%BD%94%EB%94%94%EB%84%A4%EC%9D%B4%ED%84%B0/index.html   
