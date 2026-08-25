@@ -26,4 +26,5 @@ https://arcade.makecode.com/41736-18622-85907-76136
 <img width="309" height="83" alt="image" src="https://github.com/user-attachments/assets/4c1e9d6f-819a-46a7-b38a-18c9b01fdc60" />
 
 ## 젠스파크 AI 활용한 웹사이트   
-file:///C:/Users/504/Desktop/%EB%B0%95%EC%84%9C%ED%98%84/AI%20%ED%8C%A8%EC%85%98%20%EC%BD%94%EB%94%94%EB%84%A4%EC%9D%B4%ED%84%B0/index.html   
+[file:///C:/Users/504/Desktop/%EB%B0%95%EC%84%9C%ED%98%84/AI%20%ED%8C%A8%EC%85%98%20%EC%BD%94%EB%94%94%EB%84%A4%EC%9D%B4%ED%84%B0/index.html   
+](https://ae79125b-79bb-4080-8dc9-3d1143e34426.vip.gensparksite.com/#solution)
