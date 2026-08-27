@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5분 완성 기본룩 가이드 | AI CODI</title>
+<meta name="description" content="3~40대를 위한 기본 아이템 5분 완성 스타일 가이드. 누구나 따라할 수 있는 실제 사진 기반 코디 레시피.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Noto Sans KR', 'Poppins', 'sans-serif'],
+          display: ['Poppins', 'Noto Sans KR', 'sans-serif'],
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'gradient': 'gradient 8s ease infinite',
+        },
+        keyframes: {
+          float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+          gradient: { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .style-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 2rem; overflow: hidden; transition: transform .3s, box-shadow .3s; }
+  .style-card:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(217,70,239,0.15); }
+  .style-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+  .style-photo-small { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+  .style-num { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 5rem; line-height: 1; color: rgba(255,255,255,0.05); position: absolute; top: -1rem; right: 1.5rem; }
+  .item-tag { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.82rem; color: rgba(255,255,255,0.75); }
+  .occasion-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+  .time-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, rgba(217,70,239,0.2), rgba(124,58,237,0.2)); border: 1px solid rgba(217,70,239,0.3); border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.82rem; font-weight: 600; color: #e879f9; }
+  .tip-box { background: rgba(217,70,239,0.07); border: 1px solid rgba(217,70,239,0.2); border-radius: 1rem; padding: 1rem 1.25rem; }
+  .photo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .photo-grid-3 { display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem; }
+  .photo-grid-3 .sub-col { display: grid; grid-template-rows: 1fr 1fr; gap: 0.75rem; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .section-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(217,70,239,0.3), transparent); margin: 3rem 0; }
+</style>
+</head>
+<body class="bg-[#0d0618] text-white font-sans antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#0d0618]/80 backdrop-blur-xl border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-4">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center shadow-lg shadow-fuchsia-500/30 group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-shirt text-sm"></i>
+      </span>
+      <span class="font-display font-bold text-lg tracking-tight">AI CODI<span class="text-fuchsia-400">.</span></span>
+    </a>
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+      <i class="fa-solid fa-arrow-left text-xs"></i> 메인으로
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-36 pb-20 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-fuchsia-600/20 rounded-full blur-[130px] animate-float"></div>
+    <div class="absolute top-1/2 -right-40 w-[28rem] h-[28rem] bg-violet-600/20 rounded-full blur-[130px]"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center reveal visible">
+    <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold tracking-wide text-fuchsia-300 backdrop-blur-sm">
+      <i class="fa-solid fa-clock"></i> 5분 완성 스타일 가이드
+    </span>
+    <h1 class="mt-6 font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight">
+      기본 아이템으로<br>
+      <span class="bg-gradient-to-r from-fuchsia-400 via-pink-300 to-violet-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">5분 만에 완성하는</span><br>
+      실전 스타일 5선
+    </h1>
+    <p class="mt-6 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+      3~40대를 위한 현실적인 코디 레시피. 옷장 속 기본 아이템만으로 매일 아침 고민 없이 완성할 수 있는 스타일을 실제 사진과 함께 소개합니다.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+      <span class="item-tag"><i class="fa-solid fa-user-group text-fuchsia-300"></i> 3~40대 타깃</span>
+      <span class="item-tag"><i class="fa-solid fa-clock text-violet-300"></i> 3~5분 완성</span>
+      <span class="item-tag"><i class="fa-solid fa-shirt text-pink-300"></i> 기본 아이템 활용</span>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE 01 -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+  <div class="style-card reveal">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Photos -->
+      <div class="photo-grid-3 p-4">
+        <img src="https://images.unsplash.com/photo-1762343288155-a670c877dc23?auto=format&fit=crop&w=700&q=80"
+             alt="화이트 셔츠와 블랙 슬랙스를 입은 여성" class="style-photo rounded-2xl">
+        <div class="sub-col">
+          <img src="https://images.unsplash.com/photo-1583846783214-7229a91b20ed?auto=format&fit=crop&w=400&q=80"
+               alt="화이트 셔츠 코디 디테일" class="style-photo-small rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1762343281632-bf169fe578d2?auto=format&fit=crop&w=400&q=80"
+               alt="화이트 셔츠 블랙 스커트 코디" class="style-photo-small rounded-2xl">
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center relative">
+        <div class="style-num">01</div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> 4분 완성</span>
+          <span class="occasion-badge bg-blue-500/15 text-blue-300 border border-blue-500/30">오피스</span>
+          <span class="occasion-badge bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">데일리</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-3">화이트 셔츠<br>+ 블랙 슬랙스</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          절대 실패하지 않는 클래식 조합. 어떤 신발, 어떤 가방을 들어도 세련되게 연출됩니다. 3~40대의 성숙한 분위기를 자연스럽게 살려주는 가장 안전한 선택입니다.
+        </p>
+        <div class="mb-6">
+          <p class="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">필요한 아이템</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="item-tag"><i class="fa-solid fa-shirt"></i> 화이트 면 셔츠</span>
+            <span class="item-tag"><i class="fa-solid fa-person"></i> 블랙 슬랙스</span>
+            <span class="item-tag"><i class="fa-solid fa-shoe-prints"></i> 로퍼 또는 힐</span>
+            <span class="item-tag"><i class="fa-solid fa-bag-shopping"></i> 토트백</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <p class="text-xs font-bold text-fuchsia-300 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> AI CODI 팁</p>
+          <p class="text-sm text-white/65">셔츠 앞단을 살짝 슬랙스 안으로 넣으면 (프렌치 터크) 허리 라인이 살아나고 훨씬 세련된 인상을 줍니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto px-6"></div>
+
+<!-- STYLE 02 -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+  <div class="style-card reveal">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Info (left on desktop) -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center relative order-2 lg:order-1">
+        <div class="style-num">02</div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> 5분 완성</span>
+          <span class="occasion-badge bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/30">데이트</span>
+          <span class="occasion-badge bg-purple-500/15 text-purple-300 border border-purple-500/30">스마트 캐주얼</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-3">블레이저<br>+ 청바지 + 스니커즈</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          오피스룩의 격식과 캐주얼함의 자유로움을 동시에 담은 조합. 블레이저 하나로 청바지가 단번에 세련된 스타일로 업그레이드됩니다. 3~40대의 여유로운 자신감을 표현하기에 최적입니다.
+        </p>
+        <div class="mb-6">
+          <p class="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">필요한 아이템</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="item-tag"><i class="fa-solid fa-vest"></i> 오버핏 블레이저</span>
+            <span class="item-tag"><i class="fa-solid fa-person"></i> 스트레이트 청바지</span>
+            <span class="item-tag"><i class="fa-solid fa-shoe-prints"></i> 화이트 스니커즈</span>
+            <span class="item-tag"><i class="fa-solid fa-shirt"></i> 이너 (티셔츠·이너)</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <p class="text-xs font-bold text-fuchsia-300 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> AI CODI 팁</p>
+          <p class="text-sm text-white/65">블레이저 소매를 한 번 접어 올리면 훨씬 가볍고 세련된 느낌을 연출할 수 있습니다. 스니커즈 색은 화이트가 전체 코디를 밝게 만들어 줍니다.</p>
+        </div>
+      </div>
+      <!-- Photos -->
+      <div class="photo-grid-2 p-4 order-1 lg:order-2">
+        <img src="https://images.unsplash.com/photo-1775704848013-d28bcc9bc042?auto=format&fit=crop&w=500&q=80"
+             alt="블랙 블레이저와 청바지를 입은 여성" class="style-photo rounded-2xl">
+        <div class="flex flex-col gap-3">
+          <img src="https://images.unsplash.com/photo-1762331978730-c7f64cdeda7c?auto=format&fit=crop&w=500&q=80"
+               alt="레드 블레이저와 청바지 코디" class="style-photo rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1776254037479-e390c4decd60?auto=format&fit=crop&w=500&q=80"
+               alt="블레이저 청바지 스타일링" class="style-photo rounded-2xl">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto px-6"></div>
+
+<!-- STYLE 03 -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+  <div class="style-card reveal">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Photos -->
+      <div class="photo-grid-3 p-4">
+        <img src="https://images.unsplash.com/photo-1610901157620-340856d0a50f?auto=format&fit=crop&w=700&q=80"
+             alt="그레이 니트 스웨터를 입은 여성" class="style-photo rounded-2xl">
+        <div class="sub-col">
+          <img src="https://images.unsplash.com/photo-1588271968087-4c51abe05afc?auto=format&fit=crop&w=400&q=80"
+               alt="화이트 니트 스웨터 코디" class="style-photo-small rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1608984361471-ff566593088f?auto=format&fit=crop&w=400&q=80"
+               alt="레드 스웨터 코디" class="style-photo-small rounded-2xl">
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center relative">
+        <div class="style-num">03</div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> 4분 완성</span>
+          <span class="occasion-badge bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">데일리</span>
+          <span class="occasion-badge bg-amber-500/15 text-amber-300 border border-amber-500/30">여행</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-3">크루넥 니트<br>+ 와이드팬츠</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          편안함과 스타일을 동시에 잡을 수 있는 황금 조합. 니트 한 장이 코디의 완성도를 높여주며, 와이드팬츠는 체형을 커버하면서도 세련된 실루엣을 만들어 줍니다.
+        </p>
+        <div class="mb-6">
+          <p class="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">필요한 아이템</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="item-tag"><i class="fa-solid fa-shirt"></i> 크루넥 니트</span>
+            <span class="item-tag"><i class="fa-solid fa-person"></i> 와이드팬츠</span>
+            <span class="item-tag"><i class="fa-solid fa-shoe-prints"></i> 앵클부츠 또는 스니커즈</span>
+            <span class="item-tag"><i class="fa-solid fa-bag-shopping"></i> 숄더백</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <p class="text-xs font-bold text-fuchsia-300 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> AI CODI 팁</p>
+          <p class="text-sm text-white/65">니트를 살짝 팬츠 안에 넣거나 앞부분만 살짝 넣으면 더 깔끔해 보입니다. 베이지·그레이·아이보리 등 뉴트럴 컬러끼리 매치하면 실패 없는 색상 조합을 완성할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto px-6"></div>
+
+<!-- STYLE 04 -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+  <div class="style-card reveal">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Info -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center relative order-2 lg:order-1">
+        <div class="style-num">04</div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> 3분 완성</span>
+          <span class="occasion-badge bg-pink-500/15 text-pink-300 border border-pink-500/30">주말 데이트</span>
+          <span class="occasion-badge bg-sky-500/15 text-sky-300 border border-sky-500/30">여행</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-3">화이트 티셔츠<br>+ 슬림 청바지 + 로퍼</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          가장 빠르고 가장 확실한 스타일. 기본 화이트 티에 슬림 청바지만 입어도 로퍼 하나로 감각적인 느낌을 완성할 수 있습니다. 아이템만 좋으면 스타일링이 필요 없는 조합입니다.
+        </p>
+        <div class="mb-6">
+          <p class="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">필요한 아이템</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="item-tag"><i class="fa-solid fa-shirt"></i> 화이트 크루넥 티</span>
+            <span class="item-tag"><i class="fa-solid fa-person"></i> 슬림 청바지</span>
+            <span class="item-tag"><i class="fa-solid fa-shoe-prints"></i> 로퍼 또는 레더 스니커즈</span>
+            <span class="item-tag"><i class="fa-solid fa-glasses"></i> 선글라스 (선택)</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <p class="text-xs font-bold text-fuchsia-300 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> AI CODI 팁</p>
+          <p class="text-sm text-white/65">티셔츠의 소재와 핏이 이 코디의 전부입니다. 루즈핏보다 살짝 몸에 맞는 핏의 티셔츠를 선택하세요. 목선이 넓지 않은 크루넥이 3~40대에게 특히 잘 어울립니다.</p>
+        </div>
+      </div>
+      <!-- Photos -->
+      <div class="photo-grid-2 p-4 order-1 lg:order-2">
+        <img src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?auto=format&fit=crop&w=500&q=80"
+             alt="화이트 티셔츠와 부츠 코디" class="style-photo rounded-2xl">
+        <div class="flex flex-col gap-3">
+          <img src="https://images.unsplash.com/photo-1627130697816-4d71dbfe6a5b?auto=format&fit=crop&w=500&q=80"
+               alt="화이트 상의와 화이트 팬츠 코디" class="style-photo rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80"
+               alt="청바지와 니트 코디 플랫레이" class="style-photo rounded-2xl">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto px-6"></div>
+
+<!-- STYLE 05 -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+  <div class="style-card reveal">
+    <div class="grid lg:grid-cols-2 gap-0">
+      <!-- Photos -->
+      <div class="photo-grid-3 p-4">
+        <img src="https://images.unsplash.com/photo-1523359346063-d879354c0ea5?auto=format&fit=crop&w=700&q=80"
+             alt="올블랙 코디를 한 여성" class="style-photo rounded-2xl">
+        <div class="sub-col">
+          <img src="https://images.unsplash.com/photo-1630173250799-2813d34ed14b?auto=format&fit=crop&w=400&q=80"
+               alt="올블랙 수트 코디" class="style-photo-small rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&w=400&q=80"
+               alt="청바지와 블랙 신발 코디" class="style-photo-small rounded-2xl">
+        </div>
+      </div>
+      <!-- Info -->
+      <div class="p-8 lg:p-12 flex flex-col justify-center relative">
+        <div class="style-num">05</div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> 5분 완성</span>
+          <span class="occasion-badge bg-violet-500/15 text-violet-300 border border-violet-500/30">파티</span>
+          <span class="occasion-badge bg-rose-500/15 text-rose-300 border border-rose-500/30">저녁 약속</span>
+          <span class="occasion-badge bg-white/10 text-white/60 border border-white/20">어디서나 OK</span>
+        </div>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-3">올블랙<br>모노톤 룩</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          고민이 가장 필요 없는 스타일. 검정 한 가지 컬러만으로 어떤 상황에도 통하는 완성도 높은 룩이 만들어집니다. 3~40대의 여유로운 세련미를 가장 효과적으로 표현할 수 있습니다.
+        </p>
+        <div class="mb-6">
+          <p class="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">필요한 아이템</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="item-tag"><i class="fa-solid fa-shirt"></i> 블랙 터틀넥 또는 티</span>
+            <span class="item-tag"><i class="fa-solid fa-person"></i> 블랙 팬츠 또는 스커트</span>
+            <span class="item-tag"><i class="fa-solid fa-shoe-prints"></i> 블랙 슈즈</span>
+            <span class="item-tag"><i class="fa-solid fa-bag-shopping"></i> 블랙 또는 골드 포인트 백</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <p class="text-xs font-bold text-fuchsia-300 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> AI CODI 팁</p>
+          <p class="text-sm text-white/65">올블랙의 포인트는 소재 믹스입니다. 무광·유광, 니트·면 등 다양한 질감을 섞으면 단조로움을 피하고 훨씬 입체적인 스타일을 완성할 수 있습니다. 골드 액세서리 하나로 마무리하세요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY TABLE -->
+<section class="py-16 px-6 lg:px-10 max-w-7xl mx-auto reveal">
+  <div class="text-center mb-12">
+    <span class="section-tag inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold tracking-wide text-fuchsia-300 backdrop-blur-sm">
+      <i class="fa-solid fa-table-list"></i> 한눈에 보기
+    </span>
+    <h2 class="mt-4 font-display font-bold text-3xl">5분 완성 스타일 요약</h2>
+  </div>
+  <div class="overflow-x-auto rounded-2xl border border-white/10">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="bg-white/5 text-white/50 text-xs uppercase tracking-widest">
+          <th class="px-6 py-4 text-left">스타일</th>
+          <th class="px-6 py-4 text-left">소요 시간</th>
+          <th class="px-6 py-4 text-left">핵심 아이템</th>
+          <th class="px-6 py-4 text-left">적합한 상황</th>
+          <th class="px-6 py-4 text-left">난이도</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr class="hover:bg-white/3 transition-colors">
+          <td class="px-6 py-4 font-semibold">화이트 셔츠 + 블랙 슬랙스</td>
+          <td class="px-6 py-4"><span class="time-badge text-xs py-1">4분</span></td>
+          <td class="px-6 py-4 text-white/60">면 셔츠, 슬랙스, 로퍼</td>
+          <td class="px-6 py-4 text-white/60">오피스, 데일리</td>
+          <td class="px-6 py-4"><span class="text-emerald-400 font-semibold">매우 쉬움</span></td>
+        </tr>
+        <tr class="hover:bg-white/3 transition-colors">
+          <td class="px-6 py-4 font-semibold">블레이저 + 청바지 + 스니커즈</td>
+          <td class="px-6 py-4"><span class="time-badge text-xs py-1">5분</span></td>
+          <td class="px-6 py-4 text-white/60">오버핏 블레이저, 청바지, 화이트 스니커즈</td>
+          <td class="px-6 py-4 text-white/60">데이트, 캐주얼 미팅</td>
+          <td class="px-6 py-4"><span class="text-emerald-400 font-semibold">쉬움</span></td>
+        </tr>
+        <tr class="hover:bg-white/3 transition-colors">
+          <td class="px-6 py-4 font-semibold">크루넥 니트 + 와이드팬츠</td>
+          <td class="px-6 py-4"><span class="time-badge text-xs py-1">4분</span></td>
+          <td class="px-6 py-4 text-white/60">니트, 와이드팬츠, 앵클부츠</td>
+          <td class="px-6 py-4 text-white/60">데일리, 여행</td>
+          <td class="px-6 py-4"><span class="text-emerald-400 font-semibold">매우 쉬움</span></td>
+        </tr>
+        <tr class="hover:bg-white/3 transition-colors">
+          <td class="px-6 py-4 font-semibold">화이트 티셔츠 + 청바지 + 로퍼</td>
+          <td class="px-6 py-4"><span class="time-badge text-xs py-1">3분</span></td>
+          <td class="px-6 py-4 text-white/60">화이트 크루넥 티, 청바지, 로퍼</td>
+          <td class="px-6 py-4 text-white/60">주말, 여행</td>
+          <td class="px-6 py-4"><span class="text-emerald-400 font-semibold">가장 쉬움</span></td>
+        </tr>
+        <tr class="hover:bg-white/3 transition-colors">
+          <td class="px-6 py-4 font-semibold">올블랙 모노톤</td>
+          <td class="px-6 py-4"><span class="time-badge text-xs py-1">5분</span></td>
+          <td class="px-6 py-4 text-white/60">블랙 상하의, 블랙 슈즈</td>
+          <td class="px-6 py-4 text-white/60">파티, 저녁 약속, 어디서나</td>
+          <td class="px-6 py-4"><span class="text-emerald-400 font-semibold">매우 쉬움</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 lg:px-10 max-w-4xl mx-auto reveal">
+  <div class="relative rounded-[2.5rem] bg-gradient-to-br from-fuchsia-600 to-violet-700 p-12 text-center overflow-hidden shadow-2xl shadow-fuchsia-500/20">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.5rem]">
+      <div class="absolute -top-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative">
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mb-4">AI가 나만의 5분 코디를<br>매일 준비해준다면?</h2>
+      <p class="text-white/80 mb-8 max-w-lg mx-auto">내 옷장, 내 체형, 내 라이프스타일을 학습한 AI가 오늘 나에게 가장 잘 어울리는 스타일을 자동으로 추천해줍니다.</p>
+      <a href="index.html#solution" class="inline-flex items-center gap-3 rounded-full bg-white text-fuchsia-700 px-8 py-4 font-bold shadow-xl hover:scale-105 transition-transform">
+        AI 코디네이터 솔루션 보기
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center">
+        <i class="fa-solid fa-shirt text-xs"></i>
+      </span>
+      <span class="font-display font-semibold text-white/70">AI CODI</span>
+    </div>
+    <p>사진 출처: <a href="https://unsplash.com" class="hover:text-white/70 underline transition-colors" target="_blank" rel="noopener">Unsplash</a> (무료 상업용 이미지)</p>
+    <p>© 2026 AI 패션 코디네이터. 작성인 : 박서현</p>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+  setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 2000);
+</script>
+</body>
+</html>
