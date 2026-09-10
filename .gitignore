@@ -5,6 +5,7 @@ __pycache__/
 # Development tools
 .vscode/
 .idea/
+.claude/
 .DS_Store
 
 # Temporary work
