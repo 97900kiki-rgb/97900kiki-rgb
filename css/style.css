@@ -162,6 +162,47 @@ body {
   box-shadow: 0 10px 25px -8px rgba(232, 121, 249, 0.5);
 }
 
+/* ==================== Feature cards ==================== */
+.feature-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem 1.5rem;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232, 121, 249, 0.35);
+  box-shadow: 0 24px 48px -24px rgba(232, 121, 249, 0.4);
+}
+
+.feature-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(232, 121, 249, 0.25), rgba(124, 58, 237, 0.32));
+  color: #f5d0fe;
+  font-size: 1.2rem;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.feature-card p {
+  color: rgba(255,255,255,0.63);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
 /* ==================== Solution steps ==================== */
 .step-card {
   display: flex;

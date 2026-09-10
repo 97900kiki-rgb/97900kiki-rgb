@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="AI CODI logo">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#0d0618"/>
+  <rect x="12" y="12" width="104" height="104" rx="24" fill="url(#g)" opacity="0.15"/>
+  <path d="M50 34c-2.8 0-5 2.2-5 5v14h-4c-3.3 0-6 2.7-6 6v14c0 3.3 2.7 6 6 6h4v10c0 3.3 2.7 6 6 6h8c3.3 0 6-2.7 6-6V65h6v20c0 3.3 2.7 6 6 6h8c3.3 0 6-2.7 6-6V59c0-3.3-2.7-6-6-6h-4V39c0-2.8-2.2-5-5-5h-11c-2.8 0-5 2.2-5 5v14h-8V39c0-2.8-2.2-5-5-5h-11zm18 19h12v14H68V53z" fill="url(#g)"/>
+</svg>

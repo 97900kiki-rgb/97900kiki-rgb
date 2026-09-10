@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0618">
+<meta property="og:title" content="AI 패션 코디네이터 | 나만의 AI 스타일리스트">
+<meta property="og:description" content="체형·피부톤·라이프스타일을 반영해 매일 아침 맞춤 코디를 추천하는 AI 스타일리스트">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/hero-main.png">
 <title>AI 패션 코디네이터 | 나만의 AI 스타일리스트</title>
 <meta name="description" content="AI가 당신의 체형, 피부톤, 라이프스타일을 학습해 매일 아침 완벽한 코디를 제안합니다. 나만의 AI 패션 코디네이터를 지금 만나보세요.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +71,7 @@
     <nav class="hidden md:flex items-center gap-9 text-sm font-medium text-white/70">
       <a href="#market" class="hover:text-white transition-colors">시장 기회</a>
       <a href="#problem" class="hover:text-white transition-colors">문제</a>
+      <a href="#features" class="hover:text-white transition-colors">특징</a>
       <a href="#solution" class="hover:text-white transition-colors">솔루션</a>
       <a href="style-guide.html" class="hover:text-white transition-colors text-fuchsia-300">5분 스타일 가이드</a>
     </nav>
@@ -82,6 +89,7 @@
   <div id="mobile-menu" class="md:hidden hidden bg-[#150a26]/95 backdrop-blur-lg border-t border-white/10 px-6 py-6 flex flex-col gap-5 text-white/80 text-base">
     <a href="#market" class="mobile-link">시장 기회</a>
     <a href="#problem" class="mobile-link">문제</a>
+    <a href="#features" class="mobile-link">특징</a>
     <a href="#solution" class="mobile-link">솔루션</a>
     <a href="style-guide.html" class="mobile-link">5분 스타일 가이드</a>
     <a href="chat.html" class="mt-2 text-center rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-5 py-3 font-semibold">솔루션 살펴보기</a>
@@ -113,8 +121,23 @@
         체형·피부톤·라이프스타일까지 분석해 매일 아침 완벽한 코디를 완성해드립니다.
       </p>
 
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl">
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+          <div class="text-xs text-fuchsia-300 font-semibold mb-1">개인화</div>
+          <div class="text-sm text-white/75">체형·피부톤 반영</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+          <div class="text-xs text-violet-300 font-semibold mb-1">실시간</div>
+          <div class="text-sm text-white/75">날씨·일정 반영</div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+          <div class="text-xs text-pink-300 font-semibold mb-1">효율</div>
+          <div class="text-sm text-white/75">매일 코디 자동화</div>
+        </div>
+      </div>
+
       <div class="mt-9 flex flex-wrap items-center gap-4">
-        <a href="#solution" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-7 py-4 font-semibold shadow-xl shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50 hover:-translate-y-0.5 transition-all">
+        <a href="chat.html" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-7 py-4 font-semibold shadow-xl shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50 hover:-translate-y-0.5 transition-all">
           나만의 AI 스타일리스트 만나보기
           <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
         </a>
@@ -273,6 +296,40 @@
   </div>
 </section>
 
+<!-- ================= FEATURES ================= -->
+<section id="features" class="relative py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="section-tag">WHY AI CODI</span>
+      <h2 class="section-title">매일 아침의 고민을 줄여주는 핵심 기능</h2>
+      <p class="mt-4 text-white/60">데이터보다 중요한 건 결국 “나에게 맞는 스타일”입니다.</p>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        <h3>상황 기반 추천</h3>
+        <p>날씨, 일정, 기분까지 반영해 오늘의 코디를 바로 제안합니다.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-user-check"></i></div>
+        <h3>개인 맞춤형 스타일</h3>
+        <p>체형, 피부톤, 취향 데이터를 기반으로 가장 어울리는 조합을 찾습니다.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>옷장 자원 활용</h3>
+        <p>이미 있는 아이템을 기반으로 조합을 만들어 중복 구매와 낭비를 줄입니다.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-arrow-up-short-wide"></i></div>
+        <h3>점점 똑똑해지는 추천</h3>
+        <p>취향 피드백을 학습해 매일 더 정교한 스타일을 제안해드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SOLUTION ================= -->
 <section id="solution" class="relative py-28">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
@@ -372,7 +429,7 @@
         <p class="mt-4 text-white/80 max-w-xl mx-auto">
           나만의 AI 스타일리스트가 매일 아침 당신을 위한 완벽한 코디를 준비합니다.
         </p>
-        <a href="#solution" class="mt-8 inline-flex items-center gap-3 rounded-full bg-white text-fuchsia-700 px-8 py-4 font-bold shadow-xl hover:scale-105 transition-transform">
+        <a href="chat.html" class="mt-8 inline-flex items-center gap-3 rounded-full bg-white text-fuchsia-700 px-8 py-4 font-bold shadow-xl hover:scale-105 transition-transform">
           나만의 AI 스타일리스트를 지금 만나보세요
           <i class="fa-solid fa-arrow-right"></i>
         </a>
