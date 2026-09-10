@@ -414,6 +414,154 @@
   </div>
 </section>
 
+<!-- ================= 코디 등록 ================= -->
+<section id="register" class="relative py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="section-tag">COORDI REGISTER</span>
+      <h2 class="section-title">나의 코디를 등록하면<br class="hidden sm:block">AI가 더 똑똑해집니다</h2>
+      <p class="mt-4 text-white/60">사진을 등록하고 상황, 분위기, 아이템 정보를 입력하면 매번 더 정확한 추천이 가능해집니다.</p>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch reveal">
+      <div class="register-panel p-6 sm:p-8">
+        <div class="flex items-center justify-between gap-3 mb-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-fuchsia-300/80">UPLOAD</p>
+            <h3 class="mt-2 font-display text-2xl font-bold">오늘의 코디 등록</h3>
+          </div>
+          <span class="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">AI 반영 준비</span>
+        </div>
+
+        <div class="upload-box">
+          <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+          <p class="upload-title">코디 사진을 업로드하세요</p>
+          <p class="upload-subtitle">JPG, PNG 형식의 옷 사진을 추가하면 AI가 자동으로 색상·스타일을 분석합니다.</p>
+          <label class="upload-button cursor-pointer">
+            <input id="coordi-file" type="file" class="hidden" accept="image/*">
+            <span><i class="fa-solid fa-plus"></i> 사진 선택</span>
+          </label>
+        </div>
+
+        <div id="upload-preview" class="mt-5 hidden overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          <img id="selected-image" src="" alt="선택된 코디 미리보기" class="w-full h-56 object-cover">
+        </div>
+
+        <div class="mt-6 grid sm:grid-cols-3 gap-3">
+          <div class="mini-stat text-center">
+            <div id="saved-count" class="text-xl font-display font-bold text-fuchsia-300">120+</div>
+            <div class="text-[11px] text-white/50 mt-1 uppercase tracking-wide">saved items</div>
+          </div>
+          <div class="mini-stat text-center">
+            <div class="text-xl font-display font-bold text-fuchsia-300">92%</div>
+            <div class="text-[11px] text-white/50 mt-1 uppercase tracking-wide">match rate</div>
+          </div>
+          <div class="mini-stat text-center">
+            <div class="text-xl font-display font-bold text-fuchsia-300">4.9</div>
+            <div class="text-[11px] text-white/50 mt-1 uppercase tracking-wide">user score</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="register-panel p-6 sm:p-8">
+        <div class="mb-6">
+          <p class="text-xs uppercase tracking-[0.2em] text-fuchsia-300/80">DETAILS</p>
+          <h3 class="mt-2 font-display text-2xl font-bold">코디 정보 입력</h3>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm text-white/70 mb-2">코디 이름</label>
+            <input id="coordi-name" type="text" value="세련된 데이트 룩" class="register-input">
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-white/70 mb-2">카테고리</label>
+              <select id="coordi-category" class="register-input">
+                <option>상의</option>
+                <option>하의</option>
+                <option>아우터</option>
+                <option>원피스</option>
+                <option>신발</option>
+                <option>액세서리</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-white/70 mb-2">상황</label>
+              <select id="coordi-situation" class="register-input">
+                <option>데이트</option>
+                <option>출근</option>
+                <option>여행</option>
+                <option>주말</option>
+                <option>파티</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-white/70 mb-2">무드</label>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag-chip active" data-tag="클래식">클래식</span>
+              <span class="tag-chip" data-tag="캐주얼">캐주얼</span>
+              <span class="tag-chip" data-tag="프레시">프레시</span>
+              <span class="tag-chip" data-tag="시크">시크</span>
+              <span class="tag-chip" data-tag="데일리">데일리</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm text-white/70 mb-2">메모</label>
+            <textarea id="coordi-note" rows="4" class="register-input resize-none">화이트 셔츠와 블랙 슬랙스 조합이라 편안하면서도 세련된 느낌을 낼 수 있음.</textarea>
+          </div>
+        </div>
+
+        <button id="register-button" class="mt-6 w-full rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-5 py-3.5 font-semibold shadow-lg shadow-fuchsia-500/25 transition hover:scale-[1.01]">
+          코디 등록하기
+        </button>
+        <button id="recommend-button" class="mt-3 w-full rounded-full border border-fuchsia-400/30 bg-fuchsia-500/10 px-5 py-3.5 font-semibold text-fuchsia-100 transition hover:bg-fuchsia-500/15">
+          AI 추천 다시 생성
+        </button>
+        <a href="https://www.zara.com/kr/ko/woman-jackets-l1114.html?v1=2417772" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3.5 font-semibold text-white/80 transition hover:border-white/30 hover:bg-white/10">
+          ZARA 여성 재킷 보러가기 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+        <div id="save-status" class="mt-4 min-h-[1.5rem] text-sm text-emerald-300"></div>
+      </div>
+    </div>
+
+    <div class="mt-14 reveal">
+      <div class="flex items-center justify-between gap-3 mb-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-fuchsia-300/80">MY LOOKBOOK</p>
+          <h3 class="mt-2 font-display text-2xl font-bold">등록된 코디 목록</h3>
+        </div>
+      </div>
+      <div id="coordi-gallery" class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+      </div>
+    </div>
+
+    <div class="mt-14 reveal">
+      <div class="flex items-center justify-between gap-3 mb-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-fuchsia-300/80">AI RECOMMEND</p>
+          <h3 class="mt-2 font-display text-2xl font-bold">오늘의 추천 코디</h3>
+        </div>
+      </div>
+      <div id="recommendation-panel" class="grid md:grid-cols-3 gap-5">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="coordi-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#090511]/80 backdrop-blur-sm px-4">
+  <div class="relative w-full max-w-2xl rounded-[2rem] border border-white/10 bg-[#140d22] p-3 shadow-2xl shadow-fuchsia-900/20">
+    <button id="close-modal" class="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:bg-white/10">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="modal-image" src="" alt="코디 상세 이미지" class="w-full max-h-[70vh] object-cover rounded-[1.4rem]">
+  </div>
+</div>
+
 <!-- ================= CTA ================= -->
 <section id="cta" class="relative py-28">
   <div class="max-w-5xl mx-auto px-6 lg:px-10">

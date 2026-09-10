@@ -241,6 +241,216 @@ body {
   padding: 1.1rem 1.25rem;
 }
 
+.register-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.75rem;
+  box-shadow: 0 25px 60px -35px rgba(232, 121, 249, 0.45);
+}
+
+.upload-box {
+  border: 1px dashed rgba(232, 121, 249, 0.38);
+  background: rgba(232, 121, 249, 0.04);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.upload-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(232, 121, 249, 0.28), rgba(124, 58, 237, 0.32));
+  color: #f5d0fe;
+  font-size: 1.4rem;
+}
+
+.upload-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.upload-subtitle {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.upload-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(232, 121, 249, 0.5);
+}
+
+.register-input {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  padding: 0.9rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-input:focus {
+  border-color: rgba(232, 121, 249, 0.6);
+  box-shadow: 0 0 0 3px rgba(232, 121, 249, 0.12);
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.72);
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
+}
+
+.tag-chip.active {
+  background: linear-gradient(135deg, rgba(232, 121, 249, 0.22), rgba(124, 58, 237, 0.22));
+  border-color: rgba(232, 121, 249, 0.45);
+  color: #fdf2ff;
+}
+
+.coordi-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+  box-shadow: 0 18px 40px -30px rgba(232, 121, 249, 0.45);
+}
+
+.coordi-card:hover {
+  border-color: rgba(232, 121, 249, 0.33);
+}
+
+.coordi-card img {
+  display: block;
+}
+
+.coordi-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.coordi-action-btn {
+  flex: 1;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.8);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.coordi-action-btn:hover {
+  border-color: rgba(232, 121, 249, 0.45);
+  background: rgba(232, 121, 249, 0.08);
+}
+
+.coordi-action-btn.delete {
+  color: #fecaca;
+  border-color: rgba(248, 113, 113, 0.2);
+}
+
+.coordi-action-btn.delete:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.recommend-card {
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.5rem;
+}
+
+.recommend-image {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  background: #1a1029;
+}
+
+.recommend-content {
+  padding: 1.2rem;
+}
+
+.recommend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: rgba(232, 121, 249, 0.12);
+  border: 1px solid rgba(232, 121, 249, 0.3);
+  color: #f5d0fe;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.38rem 0.7rem;
+  text-transform: uppercase;
+}
+
+.recommend-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.9rem;
+}
+
+.recommend-card p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: 0.5rem;
+}
+
+.recommend-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recommend-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.72rem;
+  padding: 0.38rem 0.7rem;
+}
+
 /* ==================== CTA ==================== */
 .cta-box {
   position: relative;
