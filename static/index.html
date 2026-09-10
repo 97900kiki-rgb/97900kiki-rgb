@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>웰니스 관상 아솔</title>
+<meta name="description" content="웰니스 관상 아솔 — 관상으로 즐기고, 얼굴을 기억해 다시 만났을 때 그동안의 변화를 함께 살펴봅니다.">
+<meta property="og:title" content="🧙‍♂️ 웰니스 관상 아솔">
+<meta property="og:description" content="관상으로 즐기고, 얼굴로 기억합니다. 틈틈이 셀카 찍듯 남겨 두면 아솔이 다시 만났을 때 안부를 묻습니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ── 유틸바 ────────────────────────────────────── -->
+  <div class="util">
+    <div class="left">
+      <div class="brand">🧙‍♂️ 웰니스 관상 ‘아솔’ <span class="ver">v4.0.0</span></div>
+      <div class="tag">얼굴을 기억하고 안부를 묻는 관상가</div>
+      <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
+        <button class="sm" id="btnAbout">ℹ️ 소개</button>
+        <button class="sm" id="btnPick">📂 앨범에서 고르기</button>
+        <input type="file" id="file" accept="image/*" class="hidden">
+      </div>
+    </div>
+    <div class="right">
+      <label class="sw"><input type="checkbox" id="swAuto"><i></i>⏱️ 자동으로 찍기</label>
+      <label class="sw"><input type="checkbox" id="swRec"><i></i>🔁 다시 온 사람 알아보기</label>
+    </div>
+  </div>
+
+  <!-- ── 인사 ──────────────────────────────────────── -->
+  <div id="greet" class="hidden"></div>
+
+  <!-- ── 카메라 ────────────────────────────────────── -->
+  <div class="card" id="camCard">
+    <div id="stage">
+      <video id="v" playsinline muted autoplay></video>
+      <canvas id="ov" class="ov"></canvas>
+    </div>
+    <div class="bar"><i id="hold"></i></div>
+    <div class="camMsg" id="camMsg">카메라를 준비하오…</div>
+    <div class="camSub" id="camSub"></div>
+    <div style="margin-top:10px; display:flex; gap:8px">
+      <button class="wide pri" id="btnShoot">📸 지금 찍기</button>
+    </div>
+    <details style="margin-top:10px">
+      <summary style="cursor:pointer; font-size:14px; color:var(--ink-soft)">
+        📷 화면이 검게 나오거나 카메라가 안 열리시오?</summary>
+      <div class="hint" style="margin-top:8px">
+        <b>1. 검은 화면에 ❌ 가 뜬다면</b> — 가상 카메라(Mirametrix·OBS 따위)를
+        브라우저가 먼저 잡은 것이오. 크롬 주소창에 아래를 붙여넣고 진짜 카메라를 고르시오.
+        <div style="display:flex; gap:6px; margin:6px 0">
+          <input type="text" id="camUrl" value="chrome://settings/content/camera" readonly>
+          <button class="sm" id="btnCopyUrl">복사</button>
+        </div>
+        이름에 <code>IR</code> 이 붙은 것은 얼굴인식 로그인용이라 흑백으로 나오니 피하시오.<br>
+        <b>2.</b> 주소창 카메라 아이콘이 ✕ 면 눌러 <b>허용</b>으로 바꾸시오.<br>
+        <b>3.</b> 줌·팀즈 등이 카메라를 쓰고 있으면 완전히 끄시오.<br>
+        <b>4.</b> 노트북 덮개나 <code>F10</code> 차단 키를 보시오.<br>
+        <b>5.</b> 아이폰은 사파리, 안드로이드는 크롬으로 여시오.
+      </div>
+    </details>
+  </div>
+
+  <!-- ── 고른 사진 ─────────────────────────────────── -->
+  <div class="card hidden" id="shotCard">
+    <div class="shots">
+      <figure><img id="imgOval" alt=""><figcaption>✅ 감정서에 담길 얼굴</figcaption></figure>
+      <figure><img id="imgMesh" alt=""><figcaption>🔍 아솔이 읽은 얼굴</figcaption></figure>
+    </div>
+    <div id="faceNote"></div>
+  </div>
+
+  <!-- ── 아솔이 본 것 ──────────────────────────────────
+       나이 고르개보다 **위**에 둔다. 아솔이 몇으로 보았는지를 먼저 보고
+       나서 고쳐 일러 주는 것이 순서다. -->
+  <div class="card hidden" id="basicCard"></div>
+
+  <!-- ── 나이 ──────────────────────────────────────── -->
+  <div class="card hidden" id="ageCard">
+    <h2 class="sec">🎂 나이를 일러 주시면 훨씬 잘 맞소</h2>
+    <div id="ageKnown" class="hint hidden">지난번에 일러 주신 대로 골라 두었소. 달라졌으면 고쳐 주시오.</div>
+    <div class="row2">
+      <div>
+        <label class="f" for="dec">연대</label>
+        <select id="dec"></select>
+      </div>
+      <div>
+        <label class="f" for="part">구간</label>
+        <select id="part">
+          <option>초반</option><option selected>중반</option><option>후반</option>
+        </select>
+      </div>
+    </div>
+    <label class="f" for="gender">성별</label>
+    <select id="gender">
+      <option value="">🤖 아솔이 알아서</option>
+      <option value="남자 사람">남성</option>
+      <option value="여자 사람">여성</option>
+    </select>
+  </div>
+
+  <!-- ── 감정서 ────────────────────────────────────── -->
+  <div id="mailMsg"></div>
+
+  <div class="card hidden" id="reportCard">
+    <h2 class="sec" id="reportTitle">📜 아솔의 관상 풀이</h2>
+    <div id="report"></div>
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <button class="wide" id="btnCopy">📋 감정서 복사하기</button>
+    </div>
+  </div>
+
+  <!-- ── 자세히 보고 메일로 ────────────────────────── -->
+  <div class="card hidden" id="formCard">
+    <h2 class="sec">🌤️ 오늘 몸과 마음의 기운은 어떠하시오?</h2>
+    <div class="starrow">
+      <div class="stars" id="stars">
+        <button data-v="1" aria-label="1점">★</button>
+        <button data-v="2" aria-label="2점">★</button>
+        <button data-v="3" aria-label="3점">★</button>
+        <button data-v="4" aria-label="4점">★</button>
+        <button data-v="5" aria-label="5점">★</button>
+      </div>
+      <span class="starlab" id="starLab">말하지 않으셔도 되오</span>
+      <button class="sm ghost hidden" id="starClear">지우기</button>
+    </div>
+    <label class="f" for="mood">하고 싶은 말이 있으면 한 줄 남기시오 (없어도 되오)</label>
+    <input type="text" id="mood" maxlength="200" placeholder="예) 요새 잠을 설치오 / 오랜만에 개운하오">
+
+    <h2 class="sec" style="margin-top:18px">🗂️ 기록으로 남기기 (선택)</h2>
+    <label class="chk"><input type="checkbox" id="keep">
+      <span>얼굴과 이 감정서를 기억해 두시오. 다음에 오면 알아보고 그동안의 변화를 함께 살펴 주시오.
+        <a href="#" id="lnkFaceNotice" style="color:var(--brand)">무엇을 담는지 보기</a></span></label>
+    <div id="keepBox" class="hidden">
+      <label class="f" for="secret">우리 둘만 아는 비밀 이야기는 다음에 당신을 알아보는 데 도움이 된다오. 한 가지 말해 주오</label>
+      <input type="text" id="secret" maxlength="500" placeholder="예) 재작년 여름에 지리산에 다녀왔소">
+      <div class="hint">다른 분의 사정은 적지 말아 주시오. 남기신 이야기는 화면에 다시 띄우지 않소.</div>
+    </div>
+    <div id="keptBox" class="hidden good">🔐 지난번에 얼굴을 맡겨 주셨소. 그대로 이어 가겠소.</div>
+
+    <h2 class="sec" style="margin-top:18px">📇 어디로 보내 드리오?</h2>
+    <div id="fillHint" class="hint hidden">지난번에 남기신 것을 채워 두었소. 바뀌었으면 고쳐 주시오.</div>
+    <div class="row2">
+      <div><label class="f" for="nm">이름</label>
+        <input type="text" id="nm" placeholder="홍길동"></div>
+      <div><label class="f" for="em">이메일</label>
+        <input type="email" id="em" placeholder="you@example.com"></div>
+    </div>
+    <label class="f" for="ph">휴대전화 <span style="color:var(--muted)">(적지 않으셔도 되오)</span></label>
+    <input type="tel" id="ph" placeholder="010-1234-5678">
+    <div class="hint" style="margin-top:10px">
+      <a href="#" id="lnkNotice" style="color:var(--brand)">개인정보 수집·이용 안내 보기</a> ·
+      아래 버튼을 누르시면 <b>안내에 동의하신 것으로 봅니다.</b>
+    </div>
+    <div id="formMsg"></div>
+  </div>
+
+</div>
+
+<!-- ── 붙박이 액션바 ──────────────────────────────── -->
+<div class="actions">
+  <div class="inner" id="actions"></div>
+</div>
+
+<!-- ── 붓을 든 동안 (가운데 모달) ─────────────────────
+     기다리는 동안 화면 구석에서 작은 글씨가 움직이면 멈춘 줄 안다.
+     가운데에 크게 두고, 지금 쓰이는 글을 흘려 보여 준다. -->
+<dialog id="workDlg" class="work">
+  <div class="wbody">
+    <div class="brush">🖌️</div>
+    <div class="wtitle" id="workMsg">장군신을 부르는 중이오…</div>
+    <div class="bar"><i id="workBar"></i></div>
+    <div class="wmeta"><span id="workChars">0자</span> · <span id="workTime">0초</span></div>
+    <div class="wtail" id="tail"></div>
+    <div class="whint">먹이 마르기 전에 다 쓰이오. 잠시만 기다리시오.</div>
+  </div>
+</dialog>
+
+<!-- ── 모달 ───────────────────────────────────────── -->
+<dialog id="dlg">
+  <div class="head"><b id="dlgTitle"></b><button class="sm" id="dlgClose">닫기</button></div>
+  <div class="body" id="dlgBody"></div>
+</dialog>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

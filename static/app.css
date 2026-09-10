@@ -1,0 +1,217 @@
+/* 웰니스 관상 '아솔' — 화면
+   Streamlit 을 걷어내고 처음부터 짠다. 버튼 하나의 크기와 자리를 우리가 정한다. */
+
+:root {
+  --brand: #7D5A5A;
+  --brand-dim: #9a7676;
+  --brand-soft: #f3e9e9;
+  --ink: #33292a;
+  --ink-soft: #5d4f4f;
+  --muted: #8f807c;
+  --line: #e7dcd6;
+  --ground: #f7f3ef;
+  --card: #ffffff;
+  --ok: #3f8c68;
+  --warn: #a2631e;
+  --warn-soft: #fbf1de;
+  --bar-h: 76px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Noto Sans KR", "Malgun Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  /* 붙박이 액션바가 마지막 줄을 덮지 않도록 그만큼 비워 둔다 */
+  padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 12px 14px 0; }
+
+/* ── 유틸바 ─────────────────────────────────────────── */
+.util {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;
+}
+.util .left { flex: 1; min-width: 0; }
+.brand { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
+.brand .ver { font-size: 11px; color: #b3a3a3; font-weight: 400; margin-left: 6px; }
+.tag { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+.util .right { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+
+/* 토글 */
+.sw { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13.5px; white-space: nowrap; }
+.sw input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sw i {
+  width: 40px; height: 23px; border-radius: 999px; background: #d9cec9;
+  position: relative; transition: background .18s; flex: none;
+}
+.sw i::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 17px; height: 17px; border-radius: 50%; background: #fff;
+  transition: transform .18s; box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.sw input:checked + i { background: var(--brand); }
+.sw input:checked + i::after { transform: translateX(17px); }
+
+/* ── 공통 ──────────────────────────────────────────── */
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px; margin-bottom: 12px;
+}
+h2.sec { font-size: 16px; font-weight: 700; margin: 0 0 8px; }
+.hint { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.note {
+  background: var(--warn-soft); border-left: 3px solid var(--warn);
+  padding: 10px 12px; border-radius: 0 8px 8px 0; font-size: 14px;
+  color: var(--ink-soft); margin: 10px 0;
+}
+.good {
+  background: #e9f4ee; border-left: 3px solid var(--ok);
+  padding: 10px 12px; border-radius: 0 8px 8px 0; font-size: 14.5px; margin: 10px 0;
+}
+.hidden { display: none !important; }
+
+/* 적어 주셔야 하는 자리를 붉게 감싼다. 화면 아래에 있어 안 보이던 칸이라,
+   "왜 안 되지" 하고 버튼만 다시 누르게 되던 곳이다. */
+.card.need {
+  border-color: #d9534f;
+  box-shadow: 0 0 0 3px rgba(217, 83, 79, .16);
+  animation: nudge .45s ease-in-out;
+}
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-5px); }
+  75%      { transform: translateX(5px); }
+}
+@media (prefers-reduced-motion: reduce) { .card.need { animation: none; } }
+input.need { border-color: #d9534f; background: #fff7f6; }
+
+/* 버튼 */
+button {
+  font-family: inherit; font-size: 15px; font-weight: 600;
+  border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink);
+  padding: 12px 16px; cursor: pointer; transition: .15s;
+  min-height: 46px;
+}
+button:hover:not(:disabled) { border-color: var(--brand-dim); }
+button:disabled { opacity: .4; cursor: default; }
+button.pri { background: var(--brand); border-color: var(--brand); color: #fff; }
+button.pri:hover:not(:disabled) { background: #6c4d4d; }
+button.wide { width: 100%; }
+button.sm { font-size: 13.5px; padding: 8px 12px; min-height: 38px; }
+
+/* 입력 */
+label.f { display: block; font-size: 13.5px; color: var(--ink-soft); margin: 10px 0 4px; font-weight: 500; }
+input[type=text], input[type=email], input[type=tel], select {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--ink);
+  padding: 11px 12px; border: 1px solid var(--line); border-radius: 9px;
+  background: #fff; min-height: 44px;
+}
+input:focus, select:focus { outline: 2px solid var(--brand-soft); border-color: var(--brand-dim); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+
+/* 별점 — 별 다섯을 한 줄에. 예전에는 "⭐⭐⭐" 처럼 겹친 칸 여섯을 늘어놓아
+   좁은 화면에서 끝 칸이 잘려 나갔고, 몇 점을 고른 것인지도 헷갈렸다. */
+.starrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.stars { display: inline-flex; gap: 2px; }
+.stars button {
+  border: none; background: none; padding: 2px 3px; min-height: 0;
+  font-size: 30px; line-height: 1; color: #ddd2cc; cursor: pointer;
+  transition: color .12s, transform .12s;
+}
+.stars button:hover { transform: scale(1.12); }
+.stars button.on { color: #e8b73f; }
+.starlab { font-size: 13.5px; color: var(--muted); }
+button.ghost { border: none; background: none; color: var(--brand); padding: 4px 6px; }
+
+/* 체크 */
+.chk { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: 14.5px; }
+.chk input { width: 20px; height: 20px; margin: 2px 0 0; flex: none; accent-color: var(--brand); }
+
+/* ── 무대(카메라·미리보기) ───────────────────────────── */
+#stage { position: relative; border-radius: 10px; overflow: hidden; background: #14100f; }
+#stage video, #stage canvas { display: block; width: 100%; }
+#stage canvas.ov { position: absolute; inset: 0; }
+.bar { height: 6px; background: #eee; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--brand); transition: width .12s linear; }
+.camMsg { text-align: center; font-size: 14.5px; margin-top: 8px; min-height: 22px; }
+.camSub { text-align: center; font-size: 12.5px; color: var(--muted); }
+
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.shots figure { margin: 0; }
+.shots img { width: 100%; border-radius: 10px; display: block; }
+.shots figcaption { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+/* ── 감정서 ────────────────────────────────────────── */
+#report { font-size: 15.5px; line-height: 1.9; }
+#report h1, #report h2, #report h3 { font-size: 17px; margin: 18px 0 6px; }
+#report p { margin: 8px 0; }
+#report hr { border: none; border-top: 1px solid var(--line); margin: 16px 0; }
+#tail {
+  color: #8a7a7a; font-size: 13px; line-height: 1.7; padding: 10px 12px;
+  background: #faf7f7; border-left: 3px solid var(--brand); border-radius: 6px;
+  min-height: 50px; word-break: break-all;
+}
+
+/* ── 붙박이 액션바 ──────────────────────────────────── */
+.actions {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  background: rgba(255,255,255,.97);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -6px 18px rgba(80,60,55,.09);
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+}
+.actions .inner { max-width: 720px; margin: 0 auto; display: flex; gap: 8px; }
+.actions button { flex: 1; }
+.actions button.pri { flex: 1.6; }
+
+/* ── 모달 ──────────────────────────────────────────── */
+dialog {
+  border: none; border-radius: 14px; padding: 0; max-width: 560px; width: calc(100% - 28px);
+  color: var(--ink); background: var(--card);
+  box-shadow: 0 20px 60px rgba(60,40,38,.28);
+}
+dialog::backdrop { background: rgba(45,32,30,.5); }
+dialog .head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--card); border-radius: 14px 14px 0 0;
+}
+dialog .head b { flex: 1; font-size: 16px; }
+dialog .body { padding: 14px 16px 18px; font-size: 14.5px; line-height: 1.8; max-height: 70vh; overflow: auto; }
+dialog .body h4 { margin: 14px 0 4px; font-size: 15px; }
+
+/* ── 붓을 든 동안 ──────────────────────────────────────
+   기다림은 화면 가운데에서 크게 보여야 한다. 구석의 작은 글씨는
+   "멈춘 것"으로 읽힌다. */
+dialog.work { max-width: 420px; }
+dialog.work::backdrop { background: rgba(45,32,30,.62); }
+.wbody { padding: 26px 22px 22px; text-align: center; }
+.brush { font-size: 40px; line-height: 1; animation: sway 1.6s ease-in-out infinite; }
+@keyframes sway {
+  0%, 100% { transform: rotate(-9deg) translateY(0); }
+  50%      { transform: rotate(9deg) translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) { .brush { animation: none; } }
+.wtitle { font-size: 16px; font-weight: 700; margin: 12px 0 14px; color: var(--ink); }
+.wbody .bar { height: 8px; }
+.wmeta {
+  font-size: 13px; color: var(--muted); margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.wtail {
+  margin-top: 14px; text-align: left; font-size: 13px; line-height: 1.75;
+  color: #6f6060; background: #faf7f7; border: 1px solid var(--line);
+  border-radius: 9px; padding: 10px 12px; min-height: 76px; max-height: 130px;
+  overflow: hidden; word-break: break-all;
+}
+.wtail::after { content: "▌"; opacity: .45; }
+.whint { font-size: 12.5px; color: var(--muted); margin-top: 12px; }

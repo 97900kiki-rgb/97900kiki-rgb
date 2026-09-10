@@ -1,0 +1,17 @@
+# 화면을 우리가 짜므로 streamlit 은 더 쓰지 않는다.
+# (버튼 크기·자리를 못 잡았고, 연결이 끊기면 상태가 통째로 날아갔다.)
+fastapi
+uvicorn[standard]
+requests
+Pillow
+fpdf2>=2.7.4
+
+# 얼굴 468점 메시. 검출도 Haar 보다 훨씬 강하다 — 안경을 썼거나 고개를 숙인
+# 얼굴을 Haar 는 통째로 놓쳤고, 그때마다 감정서에 배경만 잔뜩 든 그림이 실렸다.
+# CPU 로 수십 ms 면 끝난다. GPU 는 쓰지 않는다(이미지만 몇 GB 불어난다).
+mediapipe>=0.10
+
+# ⚠️ mediapipe 가 opencv-contrib-python 을 끌고 온다. 묶어 두지 않으면 5.x 가
+# 들어오는데, 5.x 에는 Haar 분류기(cv2.data)가 없어 **폴백이 조용히 깨진다.**
+# contrib 는 headless 가 아니라 libGL 이 필요하다 — Dockerfile 에서 깔아 준다.
+opencv-contrib-python>=4.8,<5

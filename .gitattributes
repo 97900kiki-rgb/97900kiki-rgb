@@ -1,0 +1,10 @@
+# 줄끝은 저장소·배포 모두 LF 로 고정한다.
+#
+# 왜 — 배포가 `git archive` 로 나가는데, Windows 체크아웃에서 autocrlf 가 켜져
+# 있으면 아카이브가 CRLF 로 풀린다. 파이썬은 CRLF 를 그냥 읽지만
+# **entrypoint.sh 는 `#!/bin/sh\r` 가 되어 컨테이너가 아예 안 뜬다.**
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.onnx binary
+*.task binary

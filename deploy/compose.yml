@@ -1,0 +1,35 @@
+name: gwansang
+
+services:
+  app:
+    build: .
+    image: svr3-gwansang:latest
+    container_name: gwansang
+    restart: unless-stopped
+    # 키는 여기 적지 않는다. app.env(600) 에만 있다.
+    env_file:
+      - ./app.env
+    expose:
+      - "8501"
+    # 호스트 포트를 열지 않는다 — 외부는 Cloudflare 터널로만 닿는다.
+    # 남긴 메일 주소(data/emails.jsonl)는 이미지를 다시 구워도 남아야 한다.
+    volumes:
+      - ./data:/app/data
+    networks: [edge]
+    # ⚠️ 주소를 갈아엎을 때 여기도 함께 고칠 것. v4.0.0 전까지 이 자리가
+    #    Streamlit 의 /_stcore/health 를 가리켜 11번 연속 실패, unhealthy 였다.
+    #    사이트는 멀쩡히 돌았기 때문에 아무도 몰랐다.
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8501/healthz',timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+networks:
+  edge:
+    external: true
