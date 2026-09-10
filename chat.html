@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 스타일리스트 챗 | AI CODI</title>
+<meta name="description" content="Gemini 기반 AI 스타일리스트와 실시간으로 대화하며 오늘의 코디를 상담받아보세요.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Noto Sans KR', 'Poppins', 'sans-serif'],
+          display: ['Poppins', 'Noto Sans KR', 'sans-serif'],
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'gradient': 'gradient 8s ease infinite',
+        },
+        keyframes: {
+          float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+          gradient: { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .chat-shell { display: grid; grid-template-rows: auto 1fr auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 1.75rem; overflow: hidden; background: rgba(255,255,255,0.035); box-shadow: 0 25px 70px rgba(0,0,0,0.25); height: min(72vh, 46rem); }
+  .chat-topbar { padding: 1.1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: rgba(255,255,255,0.02); }
+  .chat-log { padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+  .chat-log::-webkit-scrollbar { width: 8px; }
+  .chat-log::-webkit-scrollbar-thumb { background: rgba(232,121,249,0.25); border-radius: 999px; }
+  .msg-row { display: flex; gap: 0.7rem; max-width: 100%; }
+  .msg-row.user { justify-content: flex-end; }
+  .msg-avatar { width: 2rem; height: 2rem; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+  .msg-avatar.bot { background: linear-gradient(135deg, #e879f9, #7c3aed); }
+  .msg-avatar.user { background: rgba(255,255,255,0.1); }
+  .msg-bubble { max-width: 78%; padding: 0.75rem 1rem; border-radius: 1.1rem; font-size: 0.88rem; line-height: 1.6; white-space: pre-wrap; }
+  .msg-row.bot .msg-bubble { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-top-left-radius: 0.3rem; }
+  .msg-row.user .msg-bubble { background: linear-gradient(135deg, rgba(232,121,249,0.22), rgba(124,58,237,0.28)); border: 1px solid rgba(232,121,249,0.3); border-top-right-radius: 0.3rem; }
+  .msg-bubble.error { background: rgba(244,63,94,0.12); border-color: rgba(244,63,94,0.35); color: #fda4af; }
+  .typing-dots { display: inline-flex; gap: 0.3rem; padding: 0.2rem 0; }
+  .typing-dots span { width: 0.4rem; height: 0.4rem; border-radius: 999px; background: rgba(255,255,255,0.5); animation: typingBounce 1.1s infinite ease-in-out; }
+  .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .chat-input-bar { padding: 1rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; gap: 0.7rem; align-items: flex-end; background: rgba(255,255,255,0.02); }
+  .chat-textarea { flex: 1; resize: none; max-height: 8rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.9rem; padding: 0.75rem 1rem; color: white; font-size: 0.88rem; outline: none; font-family: inherit; }
+  .chat-textarea:focus { border-color: rgba(232,121,249,0.6); }
+  .chat-send-btn { flex-shrink: 0; width: 2.9rem; height: 2.9rem; border-radius: 0.9rem; border: 0; background: linear-gradient(135deg, #d946ef, #7c3aed); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s; box-shadow: 0 10px 24px rgba(217,70,239,0.28); }
+  .chat-send-btn:hover:not(:disabled) { transform: translateY(-2px); }
+  .chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .key-setup { padding: 2rem; }
+  .key-input-row { display: flex; gap: 0.6rem; }
+  .key-input-row input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 0.7rem; padding: 0.75rem 1rem; color: white; font-size: 0.85rem; outline: none; font-family: monospace; }
+  .key-input-row input:focus { border-color: rgba(232,121,249,0.6); }
+  .model-select { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 0.6rem; padding: 0.4rem 0.7rem; color: white; font-size: 0.75rem; outline: none; }
+  .model-select option { background: #211134; }
+  .suggestion-chip { border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); border-radius: 999px; padding: 0.45rem 0.9rem; font-size: 0.78rem; color: rgba(255,255,255,0.7); cursor: pointer; transition: 0.2s ease; white-space: nowrap; }
+  .suggestion-chip:hover { color: white; border-color: rgba(232,121,249,0.5); background: rgba(217,70,239,0.14); }
+</style>
+</head>
+<body class="bg-[#0d0618] text-white font-sans antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#0d0618]/80 backdrop-blur-xl border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-4">
+    <a href="index.html" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center shadow-lg shadow-fuchsia-500/30 group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-shirt text-sm"></i>
+      </span>
+      <span class="font-display font-bold text-lg tracking-tight">AI CODI<span class="text-fuchsia-400">.</span></span>
+    </a>
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+      <i class="fa-solid fa-arrow-left text-xs"></i> 메인으로
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-32 pb-6 overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[32rem] h-[32rem] bg-fuchsia-600/20 rounded-full blur-[130px] animate-float"></div>
+    <div class="absolute top-1/2 -right-40 w-[28rem] h-[28rem] bg-violet-600/20 rounded-full blur-[130px]"></div>
+  </div>
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold tracking-wide text-fuchsia-300 backdrop-blur-sm">
+      <i class="fa-solid fa-sparkles"></i> GEMINI POWERED
+    </span>
+    <h1 class="mt-5 font-display font-extrabold text-3xl sm:text-4xl leading-tight">
+      나만의 <span class="bg-gradient-to-r from-fuchsia-400 via-pink-300 to-violet-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">AI 스타일리스트</span>와 대화해보세요
+    </h1>
+    <p class="mt-4 text-white/60 max-w-xl mx-auto leading-relaxed text-sm">
+      오늘 날씨, 일정, 옷장 상황을 알려주시면 Gemini가 실시간으로 코디를 제안해드립니다.
+    </p>
+  </div>
+</section>
+
+<!-- CHAT -->
+<section class="relative pb-24 px-6 lg:px-10">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- API KEY SETUP (shown until a key is saved) -->
+    <div id="key-setup" class="chat-shell key-setup" style="height:auto;">
+      <div class="max-w-md mx-auto text-center">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center shadow-lg shadow-fuchsia-500/30 mb-5">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h2 class="font-display font-bold text-xl mb-2">Gemini API 키를 입력해주세요</h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-6">
+          채팅은 브라우저에서 Google Gemini API로 직접 연결됩니다. 키는 이 브라우저의 localStorage에만 저장되며 서버로 전송되지 않습니다.
+          키가 없다면 <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" class="text-fuchsia-300 hover:underline">Google AI Studio</a>에서 무료로 발급받을 수 있어요.
+        </p>
+        <div class="key-input-row">
+          <input type="password" id="api-key-input" placeholder="AIza..." autocomplete="off" spellcheck="false">
+          <button type="button" id="toggle-key-visibility" class="rounded-lg px-3 border border-white/12 text-white/60 hover:text-white transition-colors" title="키 표시/숨기기"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <p id="key-error" class="hidden text-xs text-rose-400 mt-3"><i class="fa-solid fa-circle-exclamation mr-1"></i>API 키를 입력해주세요.</p>
+        <button type="button" id="save-key-btn" class="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-6 py-3.5 font-semibold shadow-lg shadow-fuchsia-500/25 hover:shadow-fuchsia-500/45 hover:-translate-y-0.5 transition-all">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> 스타일리스트와 대화 시작하기
+        </button>
+        <p class="text-xs text-white/30 mt-4">⚠️ 정적 페이지 특성상 입력한 키는 브라우저에 노출됩니다. 공용 컴퓨터에서는 사용 후 [키 초기화]를 눌러주세요.</p>
+      </div>
+    </div>
+
+    <!-- CHAT UI (shown after a key is saved) -->
+    <div id="chat-ui" class="chat-shell hidden">
+      <div class="chat-topbar">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center text-xs"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <div>
+            <p class="font-semibold text-sm leading-tight">AI 스타일리스트</p>
+            <p class="text-[0.7rem] text-emerald-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Gemini 연결됨</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="model-select" class="model-select">
+            <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+            <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+            <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+          </select>
+          <button type="button" id="reset-key-btn" class="text-xs text-white/40 hover:text-rose-300 transition-colors" title="API 키 초기화"><i class="fa-solid fa-rotate-left"></i></button>
+        </div>
+      </div>
+
+      <div id="chat-log" class="chat-log"></div>
+
+      <div class="chat-input-bar">
+        <textarea id="chat-textarea" class="chat-textarea" rows="1" placeholder="예: 오늘 비 오고 쌀쌀한데 오피스룩 추천해줘"></textarea>
+        <button type="button" id="chat-send-btn" class="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <div id="suggestion-chips" class="hidden mt-5 flex flex-wrap justify-center gap-2.5">
+      <button type="button" class="suggestion-chip" data-q="오늘 날씨가 쌀쌀한데 오피스룩 추천해줘">🌤️ 오피스룩 추천</button>
+      <button type="button" class="suggestion-chip" data-q="주말 데이트룩으로 뭐가 좋을까?">💜 데이트룩 추천</button>
+      <button type="button" class="suggestion-chip" data-q="쿨톤인데 어떤 색 옷이 잘 어울려?">🎨 퍼스널 컬러 상담</button>
+      <button type="button" class="suggestion-chip" data-q="옷장에 기본 아이템만 있는데 어떻게 코디하면 좋을지 팁 줘">👕 옷장 활용 팁</button>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+    <div class="flex items-center gap-2">
+      <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-fuchsia-500 to-violet-600 flex items-center justify-center">
+        <i class="fa-solid fa-shirt text-xs"></i>
+      </span>
+      <span class="font-display font-semibold text-white/70">AI CODI</span>
+    </div>
+    <p>© 2026 AI 패션 코디네이터. 작성인 : 박서현</p>
+  </div>
+</footer>
+
+<script src="js/chat.js"></script>
+</body>
+</html>

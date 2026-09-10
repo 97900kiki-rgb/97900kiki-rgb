@@ -368,6 +368,43 @@ body {
   border: 1px solid rgba(255,255,255,0.35);
 }
 
+/* ==================== Gallery: shop links (ZARA / TOPTEN) ==================== */
+.outfit-shop-links {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.shop-link-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.05);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.shop-link-btn:hover {
+  color: #fff;
+  border-color: rgba(232, 121, 249, 0.4);
+  background: rgba(255,255,255,0.09);
+  transform: translateY(-1px);
+}
+
+.shop-link-btn i {
+  font-size: 0.7rem;
+  color: rgba(232, 121, 249, 0.85);
+}
+
 /* ==================== Star ratings ==================== */
 .star-display {
   color: #fbbf24;

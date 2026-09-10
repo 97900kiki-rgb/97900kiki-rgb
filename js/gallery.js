@@ -348,6 +348,10 @@
               '<div class="flex items-center gap-1">' + colorDots + '</div>' +
             '</div>' +
             '<div class="mt-3 text-xs text-white/40"><i class="fa-solid fa-user mr-1"></i>' + escapeHtml(o.author || '익명') + '</div>' +
+            '<div class="outfit-shop-links">' +
+              '<a class="shop-link-btn" href="https://www.zara.com/kr/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i>ZARA</a>' +
+              '<a class="shop-link-btn" href="https://topten10.goodwearmall.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-bag-shopping"></i>TOPTEN</a>' +
+            '</div>' +
           '</div>' +
         '</article>'
       );
@@ -701,6 +705,7 @@
 
   if (galleryGrid) {
     galleryGrid.addEventListener('click', function (e) {
+      if (e.target.closest('.shop-link-btn')) return;
       const card = e.target.closest('.outfit-card');
       if (!card) return;
       openOutfitModal(card.dataset.id);
