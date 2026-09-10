@@ -1,19 +1,11 @@
-.streamlit/secrets.toml
-testModel.py
-app copy.py
-
-# 3. 파이썬 임시 파일 (쓰레기)
-# 파이썬이 실행할 때 만드는 찌꺼기 파일들입니다.
+# Python temporary files
 __pycache__/
 *.pyc
-# 4. 개발 도구 설정
-# 내 컴퓨터의 VS Code 설정이라 남에겐 필요 없습니다.
+
+# Development tools
 .vscode/
 .idea/
 .DS_Store
 
-# 임시 작업 폴더
+# Temporary work
 temp/
-
-# 수집한 메일 주소 (개인정보) - 저장소에 넣지 않는다
-data/
