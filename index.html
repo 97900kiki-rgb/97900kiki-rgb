@@ -66,7 +66,6 @@
       <a href="#market" class="hover:text-white transition-colors">시장 기회</a>
       <a href="#problem" class="hover:text-white transition-colors">문제</a>
       <a href="#solution" class="hover:text-white transition-colors">솔루션</a>
-      <a href="#gallery" class="hover:text-white transition-colors">코디 갤러리</a>
       <a href="style-guide.html" class="hover:text-white transition-colors text-fuchsia-300">5분 스타일 가이드</a>
     </nav>
 
@@ -84,7 +83,6 @@
     <a href="#market" class="mobile-link">시장 기회</a>
     <a href="#problem" class="mobile-link">문제</a>
     <a href="#solution" class="mobile-link">솔루션</a>
-    <a href="#gallery" class="mobile-link">코디 갤러리</a>
     <a href="style-guide.html" class="mobile-link">5분 스타일 가이드</a>
     <a href="chat.html" class="mt-2 text-center rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-5 py-3 font-semibold">솔루션 살펴보기</a>
   </div>
@@ -359,170 +357,6 @@
   </div>
 </section>
 
-<!-- ================= OUTFIT GALLERY ================= -->
-<section id="gallery" class="relative py-28 overflow-hidden">
-  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[45rem] h-[45rem] bg-fuchsia-700/10 rounded-full blur-[150px]"></div>
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="text-center max-w-2xl mx-auto reveal">
-      <span class="section-tag">OUTFIT GALLERY</span>
-      <h2 class="section-title">코디 갤러리: 스타일을 기록하고 공유하세요</h2>
-      <p class="mt-4 text-white/60">사진으로 나만의 코디를 등록하고, 다른 사람들의 별점과 리뷰로 스타일을 완성해보세요.</p>
-      <button id="open-add-modal-btn" type="button" class="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600 px-7 py-3.5 font-semibold shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50 hover:-translate-y-0.5 transition-all">
-        <i class="fa-solid fa-camera-retro"></i> 내 코디 등록하기
-      </button>
-    </div>
-
-    <!-- Stats bar -->
-    <div id="gallery-stats" class="mt-14 grid grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto reveal">
-      <div class="mini-stat text-center">
-        <div id="stat-outfit-count" class="text-2xl font-display font-bold text-fuchsia-300">0</div>
-        <div class="text-xs text-white/50 mt-1">등록된 코디</div>
-      </div>
-      <div class="mini-stat text-center">
-        <div id="stat-review-count" class="text-2xl font-display font-bold text-fuchsia-300">0</div>
-        <div class="text-xs text-white/50 mt-1">누적 별점 개수</div>
-      </div>
-      <div class="mini-stat text-center">
-        <div id="stat-avg-rating" class="text-2xl font-display font-bold text-fuchsia-300">-</div>
-        <div class="text-xs text-white/50 mt-1">전체 평균 별점</div>
-      </div>
-    </div>
-
-    <!-- Filters & Sort -->
-    <div class="mt-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 reveal">
-      <div id="filter-chips" class="flex flex-wrap gap-2.5">
-        <button type="button" class="filter-chip active" data-occasion="전체">전체</button>
-        <button type="button" class="filter-chip" data-occasion="데일리">데일리</button>
-        <button type="button" class="filter-chip" data-occasion="오피스">오피스</button>
-        <button type="button" class="filter-chip" data-occasion="데이트">데이트</button>
-        <button type="button" class="filter-chip" data-occasion="여행">여행</button>
-        <button type="button" class="filter-chip" data-occasion="파티">파티</button>
-        <button type="button" class="filter-chip" data-occasion="운동">운동</button>
-      </div>
-      <select id="sort-select" class="sort-select">
-        <option value="latest">최신 등록순</option>
-        <option value="rating">별점 높은순</option>
-        <option value="reviews">리뷰 많은순</option>
-      </select>
-    </div>
-
-    <!-- Gallery grid -->
-    <div id="gallery-loading" class="mt-14 text-center text-white/50 text-sm">
-      <i class="fa-solid fa-circle-notch fa-spin mr-2"></i>코디를 불러오는 중...
-    </div>
-    <div id="gallery-empty" class="hidden mt-14 text-center text-white/50 text-sm py-16 border border-dashed border-white/15 rounded-2xl">
-      <i class="fa-solid fa-shirt text-3xl mb-4 text-white/25"></i>
-      <p>아직 등록된 코디가 없어요. 첫 번째 코디를 등록해보세요!</p>
-    </div>
-    <div id="gallery-grid" class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-7"></div>
-  </div>
-</section>
-
-<!-- ================= OUTFIT DETAIL MODAL ================= -->
-<div id="outfit-modal" class="modal-overlay">
-  <div class="modal-box">
-    <button type="button" class="modal-close" data-close-modal="outfit-modal"><i class="fa-solid fa-xmark"></i></button>
-    <div id="outfit-modal-body"></div>
-  </div>
-</div>
-
-<!-- ================= ADD / EDIT OUTFIT MODAL ================= -->
-<div id="add-modal" class="modal-overlay">
-  <div class="modal-box">
-    <button type="button" class="modal-close" data-close-modal="add-modal"><i class="fa-solid fa-xmark"></i></button>
-    <h3 id="add-modal-title" class="font-display font-bold text-2xl mb-6"><i class="fa-solid fa-camera-retro text-fuchsia-300 mr-2"></i>내 코디 등록하기</h3>
-
-    <form id="outfit-form" class="space-y-5">
-      <input type="hidden" id="outfit-id-field">
-
-      <div>
-        <label class="form-label">코디 사진</label>
-        <div id="image-drop-zone" class="image-drop-zone">
-          <div id="image-picker-placeholder" class="image-picker-placeholder">
-            <i class="fa-solid fa-cloud-arrow-up text-2xl mb-2"></i>
-            <p class="text-sm">사진을 드래그하거나 클릭해서 업로드하세요</p>
-            <p class="text-xs text-white/35 mt-1">JPG, PNG (최대 8MB 권장)</p>
-          </div>
-          <img id="image-preview" class="hidden" alt="업로드한 코디 사진 미리보기">
-          <button type="button" id="image-remove-btn" class="image-remove-btn hidden"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <input type="file" id="image-file-input" accept="image/*" class="hidden">
-      </div>
-
-      <div>
-        <label class="form-label" for="outfit-title-input">코디 이름</label>
-        <input type="text" id="outfit-title-input" class="form-input" placeholder="예: 봄맞이 데이트룩" required maxlength="40">
-      </div>
-
-      <div>
-        <label class="form-label" for="outfit-desc-input">코디 설명</label>
-        <textarea id="outfit-desc-input" class="form-input" rows="3" placeholder="코디에 대한 간단한 설명을 적어주세요" maxlength="300"></textarea>
-      </div>
-
-      <div class="grid sm:grid-cols-3 gap-4">
-        <div>
-          <label class="form-label" for="outfit-occasion-select">상황</label>
-          <select id="outfit-occasion-select" class="form-input">
-            <option value="데일리">데일리</option>
-            <option value="오피스">오피스</option>
-            <option value="데이트">데이트</option>
-            <option value="여행">여행</option>
-            <option value="파티">파티</option>
-            <option value="운동">운동</option>
-          </select>
-        </div>
-        <div>
-          <label class="form-label" for="outfit-season-select">계절</label>
-          <select id="outfit-season-select" class="form-input">
-            <option value="봄">봄</option>
-            <option value="여름">여름</option>
-            <option value="가을">가을</option>
-            <option value="겨울">겨울</option>
-            <option value="사계절">사계절</option>
-          </select>
-        </div>
-        <div>
-          <label class="form-label" for="outfit-tone-select">퍼스널 컬러</label>
-          <select id="outfit-tone-select" class="form-input">
-            <option value="웜톤">웜톤</option>
-            <option value="쿨톤">쿨톤</option>
-            <option value="뉴트럴">뉴트럴</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- 컬러 팔레트 -->
-      <div>
-        <label class="form-label">컬러 팔레트 <span class="text-white/40 font-normal text-xs">최대 6개 선택</span></label>
-        <div id="palette-suggestions" class="flex flex-wrap gap-2 mb-3"></div>
-        <div class="flex items-center justify-between mt-2">
-          <div id="selected-colors-row" class="flex items-center gap-2 flex-wrap min-h-[1.75rem]">
-            <span id="no-color-hint" class="text-xs text-white/30">위에서 색상을 선택하세요</span>
-          </div>
-          <label class="flex items-center gap-1.5 text-xs text-white/50 hover:text-fuchsia-300 transition-colors cursor-pointer shrink-0 ml-3">
-            <input type="color" id="custom-color-input" value="#a78bfa" class="w-5 h-5 rounded cursor-pointer border-0 bg-transparent p-0 opacity-0 absolute">
-            <i class="fa-solid fa-plus-circle"></i> 직접 추가
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label class="form-label" for="outfit-items-input">구성 아이템 (쉼표로 구분)</label>
-        <input type="text" id="outfit-items-input" class="form-input" placeholder="예: 트렌치코트, 니트, 슬랙스, 로퍼">
-      </div>
-
-      <div>
-        <label class="form-label" for="outfit-author-input">등록자 닉네임</label>
-        <input type="text" id="outfit-author-input" class="form-input" placeholder="닉네임을 입력하세요" required maxlength="20">
-      </div>
-
-      <button type="submit" id="outfit-form-submit-btn" class="form-submit-btn">
-        <i class="fa-solid fa-check"></i> 코디 등록하기
-      </button>
-    </form>
-  </div>
-</div>
-
 <!-- ================= CTA ================= -->
 <section id="cta" class="relative py-28">
   <div class="max-w-5xl mx-auto px-6 lg:px-10">
@@ -561,6 +395,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script src="js/gallery.js"></script>
 </body>
 </html>
