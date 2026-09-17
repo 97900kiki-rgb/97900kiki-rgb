@@ -25,12 +25,6 @@ AI 패션 코디네이터는 패션 고민을 줄여주는 AI 스타일리스트
 python -m http.server 8000
 ```
 
-브라우저에서 아래 주소를 엽니다.
-
-- 메인 앱: https://fashion5.kdt2025.com/
-- AI 상담: <http://localhost:8000/chat.html>
-- 스타일 가이드: <http://localhost:8000/style-guide.html>
-
 ## 프로젝트 구조
 
 ```text
@@ -53,8 +47,6 @@ GitHub Pages 또는 다른 정적 웹 호스팅에 저장소 루트 디렉터리
 3. Branch를 `main`, 폴더를 `/ (root)`로 지정합니다.
 4. 저장 후 생성된 Pages URL에서 `index.html`을 확인합니다.
 
-저장소: <https://github.com/97900kiki-rgb/97900kiki-rgb>
-
 ## 데이터 및 보안 안내
 
 - 등록한 코디는 현재 브라우저의 `localStorage`에만 저장됩니다.
@@ -66,3 +58,8 @@ GitHub Pages 또는 다른 정적 웹 호스팅에 저장소 루트 디렉터리
 ## 외부 링크
 
 - [Zara 여성 재킷](https://www.zara.com/kr/ko/woman-jackets-l1114.html?v1=2417772)
+- --------   
+<img width="1335" height="833" alt="image" src="https://github.com/user-attachments/assets/ca0adc5d-8cdb-4720-9d8e-866ba5a753e6" />   
+실행링크> https://fashion5.kdt2025.com/   
+저장소> <https://github.com/97900kiki-rgb/97900kiki-rgb>
+
