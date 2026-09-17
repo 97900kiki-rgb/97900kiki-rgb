@@ -27,7 +27,7 @@ python -m http.server 8000
 
 브라우저에서 아래 주소를 엽니다.
 
-- 메인 앱: [<http://localhost:8000/index.html>](https://fashion5.kdt2025.com/)
+- 메인 앱: https://fashion5.kdt2025.com/
 - AI 상담: <http://localhost:8000/chat.html>
 - 스타일 가이드: <http://localhost:8000/style-guide.html>
 
