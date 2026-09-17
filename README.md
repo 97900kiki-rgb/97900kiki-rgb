@@ -59,7 +59,8 @@ GitHub Pages 또는 다른 정적 웹 호스팅에 저장소 루트 디렉터리
 
 - [Zara 여성 재킷](https://www.zara.com/kr/ko/woman-jackets-l1114.html?v1=2417772)
 - --------   
-<img width="1335" height="833" alt="image" src="https://github.com/user-attachments/assets/ca0adc5d-8cdb-4720-9d8e-866ba5a753e6" />    
+<img width="1335" height="833" alt="image" src="https://github.com/user-attachments/assets/ca0adc5d-8cdb-4720-9d8e-866ba5a753e6" />   
+
 실행링크> https://fashion5.kdt2025.com/   
 저장소> <https://github.com/97900kiki-rgb/97900kiki-rgb>
 
